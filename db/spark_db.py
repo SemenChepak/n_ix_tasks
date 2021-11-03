@@ -1,5 +1,7 @@
 from pyspark.sql import SparkSession
 
+import creds
+
 spark = SparkSession \
     .builder \
     .appName("Python Spark SQL basic example") \
@@ -8,27 +10,23 @@ spark = SparkSession \
 
 csv_df = spark.read.csv("test_file/test_csv.csv")
 
-
 csv_df.write \
     .format("jdbc") \
-    .option("url", "jdbc:postgresql://localhost:5432/test_db") \
-    .option("dbtable", "test3") \
-    .option("user", "postgres") \
-    .option("password", "1111") \
+    .option("url", creds.url) \
+    .option("dbtable", creds.dbtable) \
+    .option("user", creds.user) \
+    .option("password", creds.password) \
     .option("driver", "org.postgresql.Driver") \
     .save()
 
 df = spark.read \
     .format("jdbc") \
-    .option("url", "jdbc:postgresql://localhost:5432/test_db") \
-    .option("dbtable", "test3") \
-    .option("user", "postgres") \
-    .option("password", "1111") \
+    .option("url", creds.url) \
+    .option("dbtable", creds.dbtable) \
+    .option("user", creds.user) \
+    .option("password", creds.password) \
     .option("driver", "org.postgresql.Driver") \
     .load()
 
 df.printSchema()
 df.show()
-
-
-
