@@ -1,0 +1,6 @@
+parquet_file/
+csv_file/
+*.txt
+__pycache__/
+.idea/
+
