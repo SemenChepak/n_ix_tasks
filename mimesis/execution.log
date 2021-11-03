@@ -1,0 +1,77 @@
+WARNING:root:: script started :schepak, 2021-11-03 15:40:48.160057
+INFO:root:generation: start created 54000 persons_data
+INFO:root:generation: performed successfully. created 54000 persons
+INFO:root:Created directory "csv_file"
+INFO:root:write_csv: created csv file csv_file/person_generation1635946849.591409.csv
+INFO:root:write_csv performed successfully
+INFO:root:upload_csv: Connection to S3 Successes: filename csv_file/person_generation1635946849.591409.csv
+INFO:root:upload_csv: uploaded file csv_file/person_generation1635946849.591409.csv
+INFO:root:upload_csv performed successfully
+INFO:root:spark_create_parquet: SparkSession created
+INFO:root:spark_create_parquet: Spark opened csv_file/person_generation1635946849.591409.csv successfully
+INFO:root:spark_create_parquet: Added column successfully
+INFO:root:spark_create_parquet: created files parquet_file/spark_file_from_person_generation1635946849
+INFO:root:upload_directory: Connection to S3 Successes: filename parquet_file/spark_file_from_person_generation1635946849
+INFO:root:upload_directory: uploaded file parquet_file/spark_file_from_person_generation1635946849
+INFO:root:upload_directory performed successfully
+WARNING:root:: script started :schepak, 2021-11-03 15:43:16.676488
+INFO:root:generation: start created 6 persons_data
+INFO:root:generation: performed successfully. created 6 persons
+INFO:root:write_csv:created csv file csv_file/person_generation1635946996.csv
+INFO:root:write_csv performed successfully
+INFO:root:upload_csv: Connection to S3 Successes: filename csv_file/person_generation1635946996.csv
+INFO:root:upload_csv: uploaded file csv_file/person_generation1635946996.csv
+INFO:root:upload_csv performed successfully
+INFO:root:spark_create_parquet: SparkSession created
+INFO:root:spark_create_parquet: Spark opened csv_file/person_generation1635946996.csv successfully
+INFO:root:spark_create_parquet: Added column successfully
+INFO:root:spark_create_parquet: created files parquet_file/spark_file_from_person_generation1635946996
+INFO:root:upload_directory: Connection to S3 Successes: filename parquet_file/spark_file_from_person_generation1635946996
+INFO:root:upload_directory: uploaded file parquet_file/spark_file_from_person_generation1635946996
+INFO:root:upload_directory performed successfully
+WARNING:root:: script started :schepak, 2021-11-03 15:50:53.371630
+INFO:root:generation: start created 10000 persons_data
+INFO:root:generation: performed successfully. created 10000 persons
+INFO:root:Created directory "csv_file"
+INFO:root:write_csv: created csv file csv_file/person_generation1635947453.csv
+INFO:root:write_csv performed successfully
+INFO:root:upload_csv: Connection to S3 Successes: filename csv_file/person_generation1635947453.csv
+INFO:root:upload_csv: uploaded file csv_file/person_generation1635947453.csv
+INFO:root:upload_csv performed successfully
+INFO:root:spark_create_parquet: SparkSession created
+INFO:root:spark_create_parquet: Spark opened csv_file/person_generation1635947453.csv successfully
+INFO:root:spark_create_parquet: Added column successfully
+INFO:root:spark_create_parquet: created files parquet_file/spark_file_from_person_generation1635947453
+INFO:root:upload_directory: Connection to S3 Successes: filename parquet_file/spark_file_from_person_generation1635947453
+INFO:root:upload_directory: uploaded file parquet_file/spark_file_from_person_generation1635947453
+INFO:root:upload_directory performed successfully
+WARNING:root:: script started :schepak, 2021-11-03 15:52:02.906055
+INFO:root:generation: start created 100000 persons_data
+INFO:root:generation: performed successfully. created 100000 persons
+INFO:root:write_csv:created csv file csv_file/person_generation1635947525.csv
+INFO:root:write_csv performed successfully
+INFO:root:upload_csv: Connection to S3 Successes: filename csv_file/person_generation1635947525.csv
+INFO:root:upload_csv: uploaded file csv_file/person_generation1635947525.csv
+INFO:root:upload_csv performed successfully
+INFO:root:spark_create_parquet: SparkSession created
+INFO:root:spark_create_parquet: Spark opened csv_file/person_generation1635947525.csv successfully
+INFO:root:spark_create_parquet: Added column successfully
+INFO:root:spark_create_parquet: created files parquet_file/spark_file_from_person_generation1635947525
+INFO:root:upload_directory: Connection to S3 Successes: filename parquet_file/spark_file_from_person_generation1635947525
+INFO:root:upload_directory: uploaded file parquet_file/spark_file_from_person_generation1635947525
+INFO:root:upload_directory performed successfully
+WARNING:root:: script started :schepak, 2021-11-03 16:06:25.415949
+INFO:root:generation: start created 25 persons_data
+INFO:root:generation: performed successfully. created 25 persons
+INFO:root:write_csv:created csv file csv_file/person_generation1635948385.csv
+INFO:root:write_csv performed successfully
+INFO:root:upload_csv: Connection to S3 Successes: filename csv_file/person_generation1635948385.csv
+INFO:root:upload_csv: uploaded file csv_file/person_generation1635948385.csv
+INFO:root:upload_csv performed successfully
+INFO:root:spark_create_parquet: SparkSession created
+INFO:root:spark_create_parquet: Spark opened csv_file/person_generation1635948385.csv successfully
+INFO:root:spark_create_parquet: Added column successfully
+INFO:root:spark_create_parquet: created files parquet_file/spark_file_from_person_generation1635948385
+INFO:root:upload_directory: Connection to S3 Successes: filename parquet_file/spark_file_from_person_generation1635948385
+INFO:root:upload_directory: uploaded file parquet_file/spark_file_from_person_generation1635948385
+INFO:root:upload_directory performed successfully
