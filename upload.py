@@ -1,7 +1,7 @@
 import csv
 import datetime
 import os
-
+import creds
 import boto3
 from mimesis import Person
 from mimesis.locales import Locale
@@ -47,10 +47,10 @@ def upload_csv(file_name):
     """open connection to S3 bucket and upload created file in s3/bucket_name/files_generated/csv_file/file_name"""
     s3 = boto3.client(
         's3',
-        aws_access_key_id='AKIAXSBFV4BZNEANTVPV',
-        aws_secret_access_key='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'
+        aws_access_key_id=creds.aws_access_key_id,
+        aws_secret_access_key=creds.aws_secret_access_key
     )
-    s3.upload_file(file_name, "testedareasemen", f'files_generated/{file_name}')
+    s3.upload_file(file_name, creds.bucket_name, f'files_generated/{file_name}')
 
 
 def spark_create_parquet(file_name: str) -> str:
@@ -96,13 +96,13 @@ def upload_directory(path: str):
      with created files in s3/bucket_name/files_generated/parquet_file/file_name"""
     s3 = boto3.client(
         's3',
-        aws_access_key_id='AKIAXSBFV4BZNEANTVPV',
-        aws_secret_access_key='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'
+        aws_access_key_id=creds.aws_access_key_id,
+        aws_secret_access_key=creds.aws_secret_access_key
     )
     for root, dirs, files in os.walk(path):
         """upload all files from the path one by one"""
         for f in files:
-            s3.upload_file(os.path.join(root, f), 'testedareasemen', f'files_generated/{path}/{f}')
+            s3.upload_file(os.path.join(root, f), creds.bucket_name, f'files_generated/{path}/{f}')
 
 
 if __name__ == '__main__':

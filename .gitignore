@@ -3,4 +3,5 @@ csv_file/
 *.txt
 __pycache__/
 .idea/
+creds.py
 
