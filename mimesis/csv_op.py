@@ -7,7 +7,6 @@ import boto3
 
 import creds
 
-
 logging.basicConfig(level=logging.INFO, datefmt='%m/%d/%Y %I:%M:%S %p', filename='execution.log', filemode='a')
 
 
@@ -26,22 +25,18 @@ def upload_csv(file_name):
 
 def write_csv(person_list: list) -> str:
     """create csv file without headers from person_list, return name of created file"""
-    try:
-        with open(f'csv_file/person_generation{str(datetime.datetime.now().timestamp()).rsplit(".")[0]}.csv', 'w',
-                  newline='') as opened_file:
-            name = opened_file.name
-            writer = csv.DictWriter(opened_file, fieldnames=list(person_list[0]))
-            writer.writerows(person_list)
-            logging.info(f'{write_csv.__name__}:created csv file {name}')
 
-    except FileNotFoundError:
-        os.mkdir('csv_file/')
-        logging.info(f'Created directory "csv_file"')
-        with open(f'csv_file/person_generation{str(datetime.datetime.now().timestamp()).rsplit(".")[0]}.csv', 'w',
-                  newline='') as opened_file:
-            name = opened_file.name
-            writer = csv.DictWriter(opened_file, fieldnames=list(person_list[0]))
-            writer.writerows(person_list)
-            logging.info(f'{write_csv.__name__}: created csv file {name}')
-    logging.info(f'{write_csv.__name__} performed successfully')
+    check_path()
+    with open(f'csv_file/person_generation{str(datetime.datetime.now().timestamp()).rsplit(".")[0]}.csv', 'w',
+              newline='') as opened_file:
+        name = opened_file.name
+        writer = csv.DictWriter(opened_file, fieldnames=list(person_list[0]))
+        writer.writerows(person_list)
+        logging.info(f'{write_csv.__name__}:created csv file {name}')
+
     return name
+
+
+def check_path():
+    if not os.path.exists("csv_file/"):
+        os.mkdir('csv_file/')
