@@ -12,8 +12,8 @@ def insert_into_db(data_for_insert: list):
 
     for row in data_for_insert:
         cursor.execute(
-            f'INSERT INTO nbu (r030,currency_id, currency_name, currency_code,exchange_date) VALUES (%s,%s, %s, %s, %s)',
-            (row['r030'], row['r030'], row['txt'], row['cc'], row['exchangedate']))
+            f'INSERT INTO nbu (r030, rate, currency_name, currency_code,exchange_date) VALUES (%s, %s, %s, %s, %s)',
+            (row['r030'], row['rate'], row['txt'], row['cc'], row['exchangedate']))
 
     postgresConnection.commit()
 

@@ -10,7 +10,7 @@ cursor = postgresConnection.cursor()
 sqlCreateTable = """create table nbu (
                                     db_id SERIAL NOT NULL PRIMARY KEY,
                                     r030 INT NOT NULL,
-                                    currency_id INT NOT NULL,
+                                    rate text NOT NULL,
                                     currency_name TEXT NOT NULL,
                                     currency_code TEXT NOT NULL,
                                     exchange_date DATE NOT NULL DEFAULT CURRENT_DATE,
