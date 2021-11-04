@@ -1,11 +1,17 @@
+import datetime
+import os
+
+import boto3
 from pyspark.sql import SparkSession, dataframe
+
+import creds
 
 
 def read_from_db():
     spark = SparkSession \
         .builder \
         .appName("Python Spark SQL basic example") \
-        .config("spark.jars", "/postgresql-42.3.1.jar") \
+        .config("spark.jars", "postgresql-42.3.1.jar") \
         .getOrCreate()
 
     df = spark.read \
@@ -16,7 +22,6 @@ def read_from_db():
         .option("password", "1111") \
         .option("driver", "org.postgresql.Driver") \
         .load()
-    df.printSchema()
     return df
 
 
@@ -25,17 +30,37 @@ def find_distinct_val(df: dataframe.DataFrame):
 
 
 def add_column(df: dataframe.DataFrame):
-    df = df.withColumn("dolar", 1 / df.rate)
+    return df.withColumn("dolar", 1 / df.rate)
 
 
 def create_parts(df: dataframe.DataFrame):
+    list_of_dirs = []
     val = find_distinct_val(df)
+    path = str(datetime.datetime.now().timestamp()).rsplit('.')[0]
     for i in val:
         new = df.filter(df.currency_code == i.currency_code)
-        new.withColumn("dolar", 1 / df.rate)
-        new.show()
-        # new.write.parquet(i.currency_code)
+        new = add_column(new)
+        new.write.parquet(
+            f"task_2_parquets_files_{path}/{i.currency_code}")
+        list_of_dirs.append(f"task_2_parquets_files_{path}/{i.currency_code}/")
+    return list_of_dirs
+
+
+def upload_directory(list_of_dirs):
+    """open connection to S3 bucket and upload directory
+     with created files in s3/bucket_name/files_generated/parquet_file/file_name"""
+    s3 = boto3.client(
+        's3',
+        aws_access_key_id=creds.aws_access_key_id,
+        aws_secret_access_key=creds.aws_secret_access_key
+    )
+    for path in list_of_dirs:
+        for root, dirs, files in os.walk(path):
+            """upload all files from the path one by one"""
+            for f in files:
+                s3.upload_file(os.path.join(root, f), creds.bucket_name, f'{path}{f}')
 
 
 if __name__ == '__main__':
-    create_parts(read_from_db())
+    path = create_parts(read_from_db())
+    upload_directory(path)
