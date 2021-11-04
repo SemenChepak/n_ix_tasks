@@ -1,6 +1,13 @@
 - Створи нову гілку (branch) репозиторію в Github і перемістися в неї (checkout)
 
-- Створи табличку в локальній Postgres DB з полями db_id (str, унікальне значення, яке генерується автоматично), r030 (int), currency_id (int), currency_name (str), currency_code (str), exchange_date (date), acquisition_datetime (timestamp, також генерується автоматично)
+- Створи табличку в локальній Postgres DB з полями
+db_id (str, унікальне значення, яке генерується автоматично),
+ r030 (int),
+ currency_id (int),
+ currency_name (str),
+ currency_code (str),
+ exchange_date (date),
+ acquisition_datetime (timestamp, також генерується автоматично)
 
 - Витягни дані в локальну Postgres DB з [https://bank.gov.ua/ua/open-data/api-dev](https://bank.gov.ua/ua/open-data/api-dev) - розділ 1: Офіційний курс гривні до іноземних валют та облікова ціна банківських металів >>> Курс на дату по валюті >>> формат json.  Зразок запиту: [https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=AMD&date=20210302&json](https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=AMD&date=20210302&json)
 
