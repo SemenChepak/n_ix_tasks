@@ -4,4 +4,4 @@ csv_file/
 __pycache__/
 .idea/
 creds.py
-
+*.jar
