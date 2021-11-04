@@ -23,3 +23,4 @@ cursor.execute(sqlCreateTable)
 
 postgresConnection.commit()
 
+postgresConnection.close()

@@ -4,7 +4,8 @@ import Extractor
 import creds
 
 
-def insert_into_db(data_for_insert: list):
+def insert_into_db(data_for_insert: list[dict]) -> None:
+    """open connection to db, insert all data"""
 
     postgresConnection = psycopg2.connect(f"dbname={creds.dbtable} user={creds.user} password={creds.password}")
 
@@ -16,6 +17,7 @@ def insert_into_db(data_for_insert: list):
             (row['r030'], row['rate'], row['txt'], row['cc'], row['exchangedate']))
 
     postgresConnection.commit()
+    postgresConnection.close()
 
 
 if __name__ == '__main__':

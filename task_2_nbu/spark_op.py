@@ -7,7 +7,9 @@ from pyspark.sql import SparkSession, dataframe
 import creds
 
 
-def read_from_db():
+def read_from_db() -> dataframe.DataFrame:
+    """open connection to db, reading all data and :return it"""
+
     spark = SparkSession \
         .builder \
         .appName("Python Spark SQL basic example") \
@@ -25,18 +27,25 @@ def read_from_db():
     return df
 
 
-def find_distinct_val(df: dataframe.DataFrame):
+def find_distinct_val(df: dataframe.DataFrame) -> list:
+    """:return all distinct Currencies from db"""
+
     return df.select(df.currency_code).distinct().collect()
 
 
-def add_column(df: dataframe.DataFrame):
+def add_column(df: dataframe.DataFrame) -> dataframe.DataFrame:
+    """Add a column with the value of the currency to the dollar, :return new df"""
+
     return df.withColumn("dolar", 1 / df.rate)
 
 
-def create_parts(df: dataframe.DataFrame):
+def create_parts(df: dataframe.DataFrame) -> list:
+    """create partitions and dir with parquet_files, :return list of dir_path"""
+
     list_of_dirs = []
     val = find_distinct_val(df)
     path = str(datetime.datetime.now().timestamp()).rsplit('.')[0]
+
     for i in val:
         new = df.filter(df.currency_code == i.currency_code)
         new = add_column(new)
@@ -46,7 +55,7 @@ def create_parts(df: dataframe.DataFrame):
     return list_of_dirs
 
 
-def upload_directory(list_of_dirs):
+def upload_directory(list_of_dirs: list) -> None:
     """open connection to S3 bucket and upload directory
      with created files in s3/bucket_name/files_generated/parquet_file/file_name"""
     s3 = boto3.client(
