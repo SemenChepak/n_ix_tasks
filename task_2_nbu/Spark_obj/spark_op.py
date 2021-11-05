@@ -43,7 +43,7 @@ def create_parts(df: dataframe.DataFrame) -> list:
 
     list_of_dirs = []
     val = find_distinct_val(df)
-    path = str(datetime.datetime.now().timestamp()).rsplit('.')[0]
+    path = int(datetime.datetime.now().timestamp())
 
     for i in val:
         new = df.filter(df.currency_code == i.currency_code)
