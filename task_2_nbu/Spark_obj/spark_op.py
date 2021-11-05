@@ -12,7 +12,7 @@ def read_from_db() -> dataframe.DataFrame:
     spark = SparkSession \
         .builder \
         .appName("Python Spark SQL basic example") \
-        .config("spark.jars", "driver/postgresql-42.3.1.jar") \
+        .config("spark.jars", "Spark_obj/driver/postgresql-42.3.1.jar") \
         .getOrCreate()
 
     df = spark.read \
