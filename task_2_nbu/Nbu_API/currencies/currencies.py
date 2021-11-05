@@ -1,0 +1,1 @@
+currency = ['USD', 'EUR', 'MXN', 'INR', 'IRR', 'GEL']

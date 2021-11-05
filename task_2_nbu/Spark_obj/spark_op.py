@@ -4,8 +4,7 @@ import os
 import boto3
 from pyspark.sql import SparkSession, dataframe
 
-import creds
-
+from Spark_obj.creds import creds
 
 def read_from_db() -> dataframe.DataFrame:
     """open connection to db, reading all data and :return it"""
@@ -13,15 +12,15 @@ def read_from_db() -> dataframe.DataFrame:
     spark = SparkSession \
         .builder \
         .appName("Python Spark SQL basic example") \
-        .config("spark.jars", "postgresql-42.3.1.jar") \
+        .config("spark.jars", "driver/postgresql-42.3.1.jar") \
         .getOrCreate()
 
     df = spark.read \
         .format("jdbc") \
-        .option("url", "jdbc:postgresql://localhost:5432/task_2") \
-        .option("dbtable", 'nbu') \
-        .option("user", "postgres") \
-        .option("password", "1111") \
+        .option("url", creds.url) \
+        .option("dbtable", creds.dbtable) \
+        .option("user", creds.user) \
+        .option("password", creds.password) \
         .option("driver", "org.postgresql.Driver") \
         .load()
     return df
