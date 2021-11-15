@@ -4,7 +4,7 @@ import os
 import boto3
 from pyspark.sql import SparkSession, dataframe
 
-from Spark_obj.creds import creds
+from creds import creds
 
 def read_from_db() -> dataframe.DataFrame:
     """open connection to db, reading all data and :return it"""

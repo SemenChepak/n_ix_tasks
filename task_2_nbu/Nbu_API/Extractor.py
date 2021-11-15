@@ -3,7 +3,7 @@ from datetime import date, timedelta, datetime
 
 import requests
 
-from Nbu_API.currencies.currencies import currency
+from currencies.currencies import currency
 
 
 def daterange(start_date, end_date):

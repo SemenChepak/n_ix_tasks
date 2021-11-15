@@ -1,7 +1,7 @@
 import psycopg2
 
 from task_2_nbu.Nbu_API import Extractor
-from db_work.creds import creds
+from db import creds
 
 
 def insert_into_db(data_for_insert: list[dict]) -> None:

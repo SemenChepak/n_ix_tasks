@@ -1,6 +1,6 @@
 import psycopg2
 
-from db_work.creds import creds
+from creds import creds
 
 postgresConnection = psycopg2.connect(f"dbname={creds.dbtable} user={creds.user} password={creds.password}")
 
